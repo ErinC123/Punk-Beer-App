@@ -1,0 +1,35 @@
+h1{
+	text-align: center;
+}
+.beer-card{
+	border:1px solid #F9F9F9;
+	border-radius: 8px;
+  	display: flex;
+ 	flex-direction: column;
+	width: 200px;
+	margin: 10px;
+	background-color: #F9F9F9;
+}
+.beer-img{
+	width: 100px;
+	height:250px;
+	margin: auto;
+	padding: 10px;
+}
+.beer-desc{
+	height: 70px;
+	text-align: center;
+	font-weight: bold;
+	padding: 10px;
+}
+
+#beerList{
+	width: 100%;
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+}
+
+.clickable-card :hover{
+	background-color: #e8e6e6;
+	cursor: pointer;
+}
