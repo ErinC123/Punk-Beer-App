@@ -2,12 +2,63 @@
 <html>
 <head>
 	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	    
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript" src='global.js'></script>
 </head>
 <body>
+	<div class="container detail">
+		<div class='detail-img' id='img-container'></div>
+		<div class='detail-desc' >
+			<h2 id='name'></h2>
+			<div id='tagline'></div>
+			<div>ABV: <label id='abv'></label></div>
+			<div>EBC: <label id='ebc'></label></div>
+			<div>IBU: <label id='ibu'></label></div>
+
+			<div>Brewers Tips: <p id='brewers-tips'></p></div>
+			<div id='food-pairs'></div>
+
+			<p id='description'></p>
+		</div>
+	</div>
 <script type="text/javascript">
-	function getURLParameter(name) {
-  	return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+	getURLParameter = (name) => {
+  		return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 	} 
+
+	$(function () {
+		$.ajax({
+			url:"https://api.punkapi.com/v2/beers/" + getURLParameter("id"),
+			success: result =>{
+				DrawDetail(JSON.parse(JSON.stringify(result))[0])
+			}
+		});
+	});
+
+	DrawDetail = (detail) => {
+		$('#tagline').html(detail.tagline);
+		$("#img-container").html("<img src=" + detail.image_url + "></img>");
+		$('#name').html(detail.name);
+		$('#abv').html(detail.abv + "%");
+		$('#ebc').html(detail.ebc + "%");
+		$('#ibu').html(detail.ibu + "%");
+		$('#brewers-tips').html(detail.brewers_tips);
+		$('#description').html(detail.description);
+		let foodPairs = "Food Pairing: <ul>"
+		detail.food_pairing.forEach(food =>{
+			foodPairs += "<li>" + food + "</li>";
+		})
+		$('#food-pairs').html(foodPairs);
+	}
 
 </script>
 </body>

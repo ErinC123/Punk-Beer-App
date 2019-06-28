@@ -1,6 +1,29 @@
 h1{
 	text-align: center;
 }
+
+nav{
+	top:0px;
+  	height:50px;
+  	position:fixed;
+  	width:100%;
+  	z-index:1;
+  	background-color: #3f4145;
+  	color:#e8bb3f;
+  	display: flex;
+  	flex-direction: row;
+}
+
+nav > a, nav > ul > li > a{
+	text-decoration: none;
+	color: #f5e642;
+}
+
+nav > a:hover, nav > ul > li > a:hover{
+	text-decoration: none;
+	color: #d1c649;
+}
+
 .beer-card{
 	border:1px solid #F9F9F9;
 	border-radius: 8px;
@@ -10,6 +33,7 @@ h1{
 	margin: 10px;
 	background-color: #F9F9F9;
 }
+
 .beer-img{
 	width: 100px;
 	height:250px;
@@ -24,12 +48,100 @@ h1{
 }
 
 #beerList{
+	margin-top: 20px;
 	width: 100%;
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
 }
 
-.clickable-card :hover{
+.clickable-card, .clickable-card:hover{
+	text-decoration: none;
+	color: black;
+}
+
+.beer-card:hover{
 	background-color: #e8e6e6;
 	cursor: pointer;
 }
+
+.detail{
+	margin-top: 50px;
+	min-height: 70vh;
+	display: grid;
+	grid-template-columns: 40% 60%;
+	background-color: silver;
+}
+.detail-img{
+	margin-top: 10%;
+	height: 60%;
+	padding: 20px;
+	text-align: center;
+}
+
+.detail-img > img{
+	height: 300px;
+}
+
+.detail-desc{
+	height: 100%;
+	padding: 30px;
+}
+
+#filter{
+	margin: 10px;
+}
+
+#morefilter{
+	margin-left: 10px;
+}
+
+#morefilter:hover{
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+
+.d_wrapper{
+			height: 100%;
+			width: 100%;
+			background-color: black;
+			position:relative;
+			top:0px;
+    		left:0px;
+		}
+
+		.bg{
+			height: 100%;
+			width: 100%;
+			background-color: black;
+			opacity: 0.5;
+			position:absolute;
+			top:0px;
+    		left:0px;
+			z-index: 1;
+			text-align: center;
+		}
+
+		.dialog{
+			background-color: #3f4145;
+			margin: auto;
+			position: absolute;
+			top:30%;
+			left:30%;
+			text-align: right;
+			z-index: 2;
+			border-radius: 5px 5px 5px 5px;
+		}
+		.content{
+			border-top: 1px solid silver;
+			background-color: white;
+			width: 100%;
+			height: 90%;
+			margin-top: 5%;
+			text-align: center;
+			border-radius: 0px 0px 5px 5px;
+		}
+		.closeBtn{
+			margin: 5px;
+			cursor: pointer;
+		}
