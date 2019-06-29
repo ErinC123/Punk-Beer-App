@@ -18,8 +18,8 @@ function DivDlg(width, height, html){
 		dialogDiv.style.height = this.height;
 
 		var closeBtn = document.createElement('a');
-		closeBtn.innerHTML="<i class='fa fa-times'></a>";
 		closeBtn.classList.add("closeBtn");
+		closeBtn.innerHTML="<i class='fa fa-times fa-2x' style='color:white; margin-top:20px;margin-right:20px'></i>";
 		closeBtn.onclick = function () {
     		dlgClose();
 		};
@@ -38,4 +38,4 @@ function DivDlg(width, height, html){
 
 function dlgClose(){
 	document.body.removeChild(document.getElementById("dialogWrapper"));
-	}
+}
